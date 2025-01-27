@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang = "it">
     <body>
-    <form action="../Model/do_update.php" id="form" method="POST">
+    <form action="index.php?controller=actors&action=do_update" id="form" method="POST">
         
         <?php 
         $id = $_GET['id'];  
-        $firstname = $_GET['nome'];
-        $lastname = $_GET['cognome'];
+        $firstname = $_GET['firstname'];
+        $lastname = $_GET['lastname'];
         ?>
         
         AGGIORNAMENTO ATTORE: <?php echo $firstname . " " . $lastname ?> <br>

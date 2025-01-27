@@ -62,5 +62,26 @@ class ActorModel{
         $stmt->close();
         $con->close();
     }
+
+    static function Do_update($id, $firstname, $lastname){
+        $con = DbConnection::getConnection();
+        $query = "UPDATE ACTOR SET first_name = ?, last_name= ? WHERE actor_id = ?;";
+        $stmt = $con->prepare($query);
+        $stmt->bind_param('ssi', $firstname, $lastname, $id);
+        $stmt->execute();
+        $stmt->close();
+        $con->close();
+    }
+
+    static function Do_delete($id){
+        $con = DbConnection::getConnection();
+        $query = "DELETE FROM ACTOR WHERE actor_id = ?";
+        $stmt = $con->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $stmt->close();
+        $con->close();
+    }
+
 }
 ?>
