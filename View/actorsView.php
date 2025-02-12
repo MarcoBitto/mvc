@@ -6,6 +6,32 @@ class actorsView{
     
     }
     
+    static function show($stmt){
+        $html = "
+            <!DOCTYPE html>
+            <html lang='it'>
+                <body>
+                    <table>
+                        <tr>
+                            <th>actor id</th>
+                            <th>first name</th>
+                            <th>last name</th>
+                            <th>last update</th>
+                        </tr>
+                            <tr>
+                            <td>{$stmt->getId()}</td>
+                            <td>{$stmt->getFirstName()}</td>
+                            <td>{$stmt->getLastName()}</td>
+                            <td>{$stmt->getLastUpdate()}</td>
+                            <td><a href='index.php?controller=Actors&action=update&id={$stmt->getId()}&firstname={$stmt->getFirstName()}&lastname={$stmt->getLastName()}'>Update</a></td>
+                            <td><a href='index.php?controller=Actors&action=delete&id={$stmt->getId()}&firstname={$stmt->getFirstName()}&lastname={$stmt->getLastName()}'>Delete</a></td>
+                            </tr>
+                    </table>
+                </body>
+            </html>
+            ";
+        echo $html;
+    }
     
     static function show_all($stmt){
         $html = "

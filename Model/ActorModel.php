@@ -13,6 +13,19 @@ class ActorModel{
         $this->last_update = $last_update;
     }
 
+    static function get(){
+        $id = $_GET["id"];
+        $con = DbConnection::getConnection();
+        $query = "SELECT actor_id, first_name, last_name, last_update FROM actor WHERE actor_id = ?;";
+        $stmt = $con->prepare($query);
+        $stmt -> bind_param('i', $id);
+        $stmt -> execute();
+        $stmt -> bind_result($id, $firstname, $lastname, $lastupdate);
+        $stmt->fetch();
+        $actor = new ActorModel($id, $firstname, $lastname, $lastupdate);
+        $stmt -> close();
+        return $actor;
+    }
 
     static function get_all(){
         $con = DbConnection::getConnection();

@@ -11,11 +11,13 @@ class ActorsController{
         require_once("Model/ActorModel.php");
         $actors = ActorModel::get_all();
         actorsView::show_all($actors);
-
     }
 
     static function Show(){
-        header("location: View\actorShow.php");
+        require_once("Model/ActorModel.php");
+        require_once("View/actorsView.php");
+        $actor = ActorModel::get();
+        actorsView::show($actor);
     }
 
     static function Insert(){
